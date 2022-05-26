@@ -1,7 +1,7 @@
 const db_ID = {//data ID & Password
     orangBiasa: {
         password: 'ahok2periode',
-        wallet: 200_000
+        wallet: 300_000
     },
     sultanCakung: {
         password: 'jokowijugamanusia',
@@ -52,7 +52,7 @@ const db_skin = {//data untuk skin
     },
 }
 
-let userInput = 'sultanCakung';//diperlukan agar bisa akses wallet user di db_ID, value diperoleh apabila button sign in dipencet
+let userInput = 'orangBiasa';//diperlukan agar bisa akses wallet user di db_ID, value diperoleh apabila button sign in dipencet
 let userWallet = db_ID[userInput].wallet;//untuk display
 let tempWallet = userWallet;//temp untuk function reset
 let collectedMoney = 0;//state awal
@@ -140,8 +140,8 @@ function groupChoice(group) {//parameter diperoleh berupa array dari function fi
 
 //function gacha memberikan secara acak item dengan harga yang murah
 function gacha() { 
-    const gachaPrice = 10_000;
-    if (userWallet <= gachaPrice) {//biar end function excetion jika user wallet kurang
+    const gachaPrice = 50_000;
+    if (collectedMoney < gachaPrice) {//biar end function excetion jika user wallet kurang
         return;
     }
 
@@ -203,18 +203,20 @@ function fetchItem() {
 }
 
 //test case
-let skin2 = 'skin2', skin6 = 'skin6'
+let skin2 = 'skin2', skin1 = 'skin1'
 console.log(userWallet, collectedMoney, userChart, '<<1');
 getMoney(100_000);
 console.log(userWallet, collectedMoney, userChart,'<<2');
 calculation(skin2);
 console.log(userWallet, collectedMoney, userChart,'<<3');
-cancel();
+calculation(skin1);
 console.log(userWallet, collectedMoney, userChart,'<<4');
-gacha();
-gacha();
-console.log(userWallet, collectedMoney, userChart,'<<5');
 cancel();
+console.log(userWallet, collectedMoney, userChart,'<<5');
+gacha();
+gacha();
 console.log(userWallet, collectedMoney, userChart,'<<6');
-reset();
+cancel();
 console.log(userWallet, collectedMoney, userChart,'<<7');
+reset();
+console.log(userWallet, collectedMoney, userChart,'<<8');
