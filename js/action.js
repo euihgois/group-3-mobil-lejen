@@ -52,6 +52,14 @@ const db_skin = {//data untuk skin
     },
 }
 
+/* state yang akan ditampilkan:
+1. userWallet
+2. collectedMoney
+3. userChart
+4. fetchedItems
+5. displayChange
+*/
+
 let userInput = 'orangBiasa';//diperlukan agar bisa akses wallet user di db_ID, value diperoleh apabila button sign in dipencet
 let userWallet = db_ID[userInput].wallet;//untuk display
 let tempWallet = userWallet;//temp untuk function reset
@@ -74,6 +82,7 @@ function calculation(skin) {//tergantung skinnya apa yang dipencet, jika tombol 
         collectedMoney -= db_skin[skin].price;//duit di vending berkurang
         db_skin[skin].stock--; //stock berkurang
         userChart.push({value: skin, cancelable: true}); //item masuk chart
+        // addItemOnDisplay();
     }
 }
 
@@ -117,6 +126,7 @@ function checkOut() {
     userWallet += collectedMoney;
     fetchedItems = userChart;
     userChart = [];
+    displayChange = collectedMoney;
     collectedMoney = 0;
     document.getElementById('tempat ambil item yang dibeli') = 'kumpulan gambar mobil yang diambil';//item dalam bentuk kumpulan
 }
@@ -203,9 +213,10 @@ function fetchItem() {
     document.getElementById('tempat ambil item yang dibeli').innerHTML = '';
 }
 
-//function addItemOnDisplay
-function addItemOnDisplay(array) {
-    for (let item of array) {
+//function addItemOnDisplay berguna untuk menambah element di html
+function addItemOnDisplay() {
+    document.getElementById('display chart').innerHTML = '';//mungkin kita remove dulu isinya lalu ganti yang baru
+    for (let item of userChart) {
         document.getElementById('display chart').innerHTML += db_skin[item.value].image; //nambah gambar, cuman mungkin lebih baik langsung dalam bentuk <div> jadi biar langsung teredit
     }
 }
