@@ -165,6 +165,7 @@ function gacha() {
     db_skin[prize].stock--; //sepertinya harus dibuat function update
 }
 
+
 //test case
 // console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<1');
 // getMoney(150_000);
