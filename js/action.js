@@ -176,7 +176,22 @@ function signIn() {
 function signUp() {
     let newID = document.getElementById('nama pendaftar');//jika sempat kasih fitur filter password yang diizinkan (opsional)
     let newPass = document.getElementById('password user baru');
-    db_ID[newID].password = {password: newPass, wallet: 0};//karena pengguna baru wallet kosong, mungkin kasih halaman fitur topup 
+    if (filterID(newID)) {
+        db_ID[newID].password = {password: newPass, wallet: 0};//karena pengguna baru wallet kosong, mungkin kasih halaman fitur topup 
+    } else {
+        alert('password tidak sesuai kriteria');//versi simpel
+    }
+}
+
+//function filter ID
+function filterID(str) {
+    const forbidden = [' ', '&', '@'];//hanya perlu dimasukkan saja yang dilarang
+    for (let char of str) {
+        if (forbidden.includes(char)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 //test case
