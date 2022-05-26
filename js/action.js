@@ -58,6 +58,7 @@ let tempWallet = userWallet;//temp untuk function reset
 let collectedMoney = 0;//state awal
 let userChart = [];//untuk display, setiap element berbentuk object {value: <nama skin>, cancelable: <true/false>}
 let displayChange; //untuk display kembalian jika diperlukan
+let fetchedItems;
 
 //function getMoney untuk mengambil user wallet sejumlah nominal di tombol
 function getMoney(nominal) {//asumsi parameter bertipe Number, jika tidak perlu dimodifikasi
@@ -114,8 +115,10 @@ function reset() {
 function checkOut() {
     displayChange = userWallet; //untuk display kembalian
     userWallet += collectedMoney;
+    fetchedItems = userChart;
     userChart = [];
     collectedMoney = 0;
+    document.getElementById('tempat ambil item yang dibeli') = 'kumpulan gambar mobil yang diambil';//item dalam bentuk kumpulan
 }
 
 //function filterByRarity untuk function groupChoice
@@ -192,6 +195,11 @@ function filterID(str) {
         }
     }
     return true;
+}
+
+//function fetchItem berguna untuk menghilang items yang muncul setelah checkout
+function fetchItem() {
+    document.getElementById('tempat ambil item yang dibeli') = 'kumplannya diremove atau dihilangkan, mungkin dihide'
 }
 
 //test case
