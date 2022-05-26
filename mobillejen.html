@@ -10,24 +10,25 @@
         <div class="vend-outer">
          
 
-         <span href="#" class="gacha-btn">Gacha</span>
-         <span href="#" class="cancel-btn" >Cancel</span>
-         <span href="#" class="reset-btn">Reset</span>
-          
+         <span href="#" class="gacha-btn" onclick="gacha()">Gacha</span>
+         <span href="#" class="cancel-btn" onclick="cancel()" >Cancel</span>
+         <span href="#" class="reset-btn" onclick="reset()">Reset</span>
+         <span href="#" class="checkout-btn" onclick="checkOut()">CheckOUT</span>
+
           <div class="display-box" id="displayBox">
 
           </div>
-          <div class="pay-box" id="pay">
+          <div class="pay-box" id="displayChange">
 
           </div>
           <div id="sodaCount" class="soda-count">
 
           </div>
           <div class="coin-box">
-            <div class="coin-outter" id="five">
+            <div class="coin-outter" id="five" onclick="getMoney(50000)">
               <p class="coin">50000</p>
             </div>
-            <div class="coin-outter" id="ten">
+            <div class="coin-outter" id="ten" onclick="getMoney(100000)">
               <p class="coin">100000</p>
             </div>
           </div>
@@ -153,40 +154,40 @@
           </div>
           
           <div class="touch-pad">
-            <div class="button" id="A1">
+            <div class="button" id="A1" onclick="calculation('mobil1')">
               <p>A1</p>
             </div>
-            <div class="button" id="A2">
+            <div class="button" id="A2" onclick="calculation('mobil2')">
               <p>A2</p>
             </div>
-            <div class="button" id="B1">
+            <div class="button" id="B1" onclick="calculation('mobil3')">
               <p>B1</p>
             </div>
-            <div class="button" id="B2">
+            <div class="button" id="B2" onclick="calculation('mobil4')">
               <p>B2</p>
             </div>
-            <div class="button" id="C1">
+            <div class="button" id="C1" onclick="calculation('mobil5')">
               <p>C1</p>
             </div>
-            <div class="button" id="C2">
+            <div class="button" id="C2" onclick="calculation('mobil6')">
               <p>C2</p>
             </div>
-            <div class="button" id="D1">
+            <div class="button" id="D1" onclick="calculation('mobil7')">
               <p>D1</p>
             </div>
-            <div class="button" id="D2">
+            <div class="button" id="D2" onclick="calculation('mobil8')">
               <p>D2</p>
             </div>
-            <div class="button" id="E1">
+            <div class="button" id="E1" onclick="calculation('mobil9')">
               <p>E2</p>
             </div>
-            <div class="button" id="E2">
+            <div class="button" id="E2" onclick="calculation('mobil10')">
               <p>E2</p>
             </div>
             
           </div>
           <div class="grab-box">
-
+            
           </div>
         </div>
       </div>
@@ -216,5 +217,7 @@
           </div>
   
   -->
+
+  <script src="./js/action.js"></script>
   </body>
 </html>
