@@ -17,32 +17,38 @@ const db_skin = {//data untuk skin
     skin1: {
         image: 'dummyImage',
         price: 40_000,
-        stock: 10
+        stock: 10,
+        rarity: 'common'
     },
     skin2: {
         image: 'dummyImage',
         price: 50_000,
-        stock: 10
+        stock: 10,
+        rarity: 'common'
     },
     skin3: {
         image: 'dummyImage',
         price: 20_000,
-        stock: 10
+        stock: 10,
+        rarity: 'poor'
     },
     skin4: {
         image: 'dummyImage',
         price: 400_000,
-        stock: 10
+        stock: 10,
+        rarity: 'rare'
     },
     skin5: {
         image: 'dummyImage',
         price: 150_000,
-        stock: 10
+        stock: 10,
+        rarity: 'uncommon'
     },
     skin5: {
         image: 'dummyImage',
         price: 900_000,
-        stock: 10
+        stock: 10,
+        rarity: 'legend'
     },
 }
 
@@ -115,14 +121,61 @@ function checkOut() {
     userChart = [];
 }
 
+//function filterByRarity untuk function groupChoice
+function filterByRarity(rarity) {
+    let result = [];
+    for (let skin in db_skin) {
+        if (db_skin[skin].rarity === rarity) {
+            result.push(skin);
+        }
+    }
+    return result;
+}
 
+//function tambahan untuk function gacha, memilih secara random (memiliki chance yang sama karena pseudo-random nya bersifat uniform distribution dalam range tersebut)
+function groupChoice(group) {//parameter diperoleh berupa array dari function filterByRarity
+    let randomNumber =  Math.floor(Math.random() * group.length); //diperoleh number antara 0 sampai index terakhir array group
+    return group[randomNumber];
+}
+
+//function gacha memberikan secara acak item dengan harga yang murah
+function gacha() {
+    const gachaPrice = 10_000;
+    if (userWallet < gachaPrice) {//biar end function excetion jika user wallet kurang
+        return;
+    }
+
+    const RANGE = 100;
+    let randomNumber = Math.ceil(Math.random() * RANGE);//memperoleh angka antara 1 sampai RANGE
+    let rarity = 'legend';
+    if (randomNumber < 40) {//klo mau ditampilkan rarity, variable bisa dibuat global
+        rarity = 'poor';
+    } else if (randomNumber < 75) {
+        rarity = 'common';
+    } else if (randomNumber < 90) {
+        rarity = 'uncommon';
+    } else if (randomNumber < 97) {
+        rarity = 'rare';
+    }
+    
+    let prize = groupChoice(filterByRarity(rarity));
+    collectedMoney -= gachaPrice;
+    userChart.push({value: prize, cancelable: false});
+    db_skin[prize].stock--; //sepertinya harus dibuat function update
+}
+
+//test case
 console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<1');
-getMoney(100_000);
-calculation(itemClicked1);
-calculation(itemClicked2);
+getMoney(150_000);
 console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<2');
-checkOut();
+calculation(itemClicked1);
 console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<3');
+calculation(itemClicked2);
+console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<4');
+gacha();
+console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<5');
+checkOut();
+console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<6');
 
 //abaikan yang bawah karena dom belom kelar
 // function startButton() {//ketika masuk pertama kali, ada tombol "Masuk", apabila diklik, layar ter-hide dan muncul form ID & Password
