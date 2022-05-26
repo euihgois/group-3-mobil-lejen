@@ -109,7 +109,7 @@ function reset() {
     collectedMoney = 0;//money di vending kosong
     userWallet = tempWallet;//duit kembali
     for (let item of userChart) {//mengemvalikan stock
-        db_skin[item].stock++;
+        db_skin[item.value].stock++;
     }
     userChart = [];//chart dikosongkan
 }
@@ -131,6 +131,7 @@ function filterByRarity(rarity) {
     }
     return result;
 }
+
 
 //function tambahan untuk function gacha, memilih secara random (memiliki chance yang sama karena pseudo-random nya bersifat uniform distribution dalam range tersebut)
 function groupChoice(group) {//parameter diperoleh berupa array dari function filterByRarity
@@ -165,17 +166,19 @@ function gacha() {
 }
 
 //test case
-console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<1');
-getMoney(150_000);
-console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<2');
-calculation(itemClicked1);
-console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<3');
-calculation(itemClicked2);
-console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<4');
-gacha();
-console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<5');
-checkOut();
-console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<6');
+// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<1');
+// getMoney(150_000);
+// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<2');
+// calculation(itemClicked1);
+// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<3');
+// calculation(itemClicked2);
+// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<4');
+// gacha();
+// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<5');
+// reset();
+// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<6');
+// checkOut();
+// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<7');
 
 //abaikan yang bawah karena dom belom kelar
 // function startButton() {//ketika masuk pertama kali, ada tombol "Masuk", apabila diklik, layar ter-hide dan muncul form ID & Password
