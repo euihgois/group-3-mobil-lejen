@@ -1,4 +1,4 @@
-"tema:vending machine beli skin mobil lejen
+Vending Machine Mobil Lejen
 overview:
 1. muncul skin
 2. masukkan nominal uang
