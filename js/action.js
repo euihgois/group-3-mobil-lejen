@@ -1,13 +1,13 @@
 const db_ID = {//data ID & Password
-    orangBiasa: {
-        password: 'ahok2periode',
+    '1': {
+        password: '1',
         wallet: 300_000
     },
-    sultanCakung: {
+    'sultanCakung@hotmail.com': {
         password: 'jokowijugamanusia',
         wallet: Infinity
     },
-    orangMiskin: {
+    'orangMiskin@poor.com': {
         password: 'YNTKTS',
         wallet: 0
     }
@@ -60,7 +60,7 @@ const db_skin = {//data untuk skin
 5. displayChange
 */
 
-let userInput = 'orangBiasa';//diperlukan agar bisa akses wallet user di db_ID, value diperoleh apabila button sign in dipencet
+let userInput = sessionStorage.getItem('userInput') || 0; //diperlukan agar bisa akses wallet user di db_ID, value diperoleh apabila button sign in dipencet
 let userWallet = db_ID[userInput].wallet;//untuk display
 let tempWallet = userWallet;//temp untuk function reset
 let collectedMoney = 0;//state awal
@@ -69,7 +69,7 @@ let displayChange; //untuk display kembalian jika diperlukan
 let fetchedItems;
 
 //function getMoney untuk mengambil user wallet sejumlah nominal di tombol
-function getMoney(nominal) {//asumsi parameter bertipe Number, jika tidak perlu dimodifikasi
+function getMoney(nominal) {//asumsi parameter bertipe Number, jika tidak maka perlu dimodifikasi
     if (userWallet >= nominal) {
         userWallet -= nominal;
         collectedMoney += nominal;
@@ -150,12 +150,12 @@ function groupChoice(group) {//parameter diperoleh berupa array dari function fi
 
 //function gacha memberikan secara acak item dengan harga yang murah
 function gacha() { 
-    const gachaPrice = 50_000;
-    if (collectedMoney < gachaPrice) {//biar end function excetion jika user wallet kurang
+    const GACHA_PRIZE = 50_000;
+    if (collectedMoney < GACHA_PRIZE) {//biar end function excetion jika user wallet kurang
         return;
     }
 
-    let RANGE = 100;
+    const RANGE = 100;
     let randomNumber = Math.ceil(Math.random() * RANGE);//memperoleh angka antara 1 sampai RANGE
     let rarity = 'legend'; //flagging
     if (randomNumber < 40) {//klo mau ditampilkan rarity, variable bisa dibuat global
@@ -176,19 +176,21 @@ function gacha() {
 
 //function signIn digunakan sebagai filter data
 function signIn() {
-    let inputPassword = document.getElementById('password');//box password
-    userInput = document.getElementById('input'); //box id
+    let inputPassword = document.getElementById('password').value;//box password
+    userInput = document.getElementById('email').value; //box id
+    sessionStorage.setItem('userInput', userInput);
     if (userInput in db_ID && inputPassword === db_ID[userInput].password) {
-        location.href = 'halaman baru html';//<file html>
-    } else {
+        location.href = 'mobillejen.html';//<file html>
+    } 
+    else {
         alert("Login gagal");//untuk sementara yang gampang
     }
 }
 
 //function signUp digunakan untuk menambah data baru di database
 function signUp() {
-    let newID = document.getElementById('nama pendaftar');//jika sempat kasih fitur filter password yang diizinkan (opsional)
-    let newPass = document.getElementById('password user baru');
+    let newID = document.getElementById('nama pendaftar').value;//jika sempat kasih fitur filter password yang diizinkan (opsional)
+    let newPass = document.getElementById('password user baru').value;
     if (filterID(newID)) {
         db_ID[newID].password = {password: newPass, wallet: 0};//karena pengguna baru wallet kosong, mungkin kasih halaman fitur topup
         location.href = 'kembali ke halaman sign in'
@@ -215,27 +217,27 @@ function fetchItem() {
 
 //function addItemOnDisplay berguna untuk menambah element di html
 function addItemOnDisplay() {
-    document.getElementById('display chart').innerHTML = '';//mungkin kita remove dulu isinya lalu ganti yang baru
+    document.getElementById('display chart').value = '';//mungkin kita remove dulu isinya lalu ganti yang baru
     for (let item of userChart) {
-        document.getElementById('display chart').innerHTML += db_skin[item.value].image; //nambah gambar, cuman mungkin lebih baik langsung dalam bentuk <div> jadi biar langsung teredit
+        document.getElementById('display chart').value += db_skin[item.value].image; //nambah gambar, cuman mungkin lebih baik langsung dalam bentuk <div> jadi biar langsung teredit
     }
 }
 
 //test case
-let skin2 = 'skin2', skin1 = 'skin1'
-console.log(userWallet, collectedMoney, userChart, '<<1');
-getMoney(100_000);
-console.log(userWallet, collectedMoney, userChart,'<<2');
-calculation(skin2);
-console.log(userWallet, collectedMoney, userChart,'<<3');
-calculation(skin1);
-console.log(userWallet, collectedMoney, userChart,'<<4');
-cancel();
-console.log(userWallet, collectedMoney, userChart,'<<5');
-gacha();
-gacha();
-console.log(userWallet, collectedMoney, userChart,'<<6');
-cancel();
-console.log(userWallet, collectedMoney, userChart,'<<7');
-reset();
-console.log(userWallet, collectedMoney, userChart,'<<8');
+// let skin2 = 'skin2', skin1 = 'skin1'
+// console.log(userWallet, collectedMoney, userChart, '<<1');
+// getMoney(100_000);
+// console.log(userWallet, collectedMoney, userChart,'<<2');
+// calculation(skin2);
+// console.log(userWallet, collectedMoney, userChart,'<<3');
+// calculation(skin1);
+// console.log(userWallet, collectedMoney, userChart,'<<4');
+// cancel();
+// console.log(userWallet, collectedMoney, userChart,'<<5');
+// gacha();
+// gacha();
+// console.log(userWallet, collectedMoney, userChart,'<<6');
+// cancel();
+// console.log(userWallet, collectedMoney, userChart,'<<7');
+// reset();
+// console.log(userWallet, collectedMoney, userChart,'<<8');
