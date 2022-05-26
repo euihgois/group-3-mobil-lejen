@@ -1,21 +1,31 @@
 body {
+  
     padding: 0;
     margin: 0;
   }
   
   .page-wrap {
+    background-image: url(/imgs/wallpaperflare.com_wallpaper.jpg);
+    background-size: 100%;
+
     height: 100vh;
     position: relative;
     padding: 75px 15px 50px 15px;
-    background-color:skyblue;
+   
   }
   
+  .yellow{
+    width: 100px;
+    
+  }
+
   .vend-outer {
-    width: 400px;
+    width: 450px;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
     margin: auto;
     height: 500px;
-    background-color: #E7263B;
+    background-image: url(/imgs/e7240d0301e0eb492dc1a774a31e001d-700.jpg);
+    background-size: 90%;
     padding: 20px;
     position: relative;
     border-radius: 5px;
@@ -51,7 +61,7 @@ body {
     position: absolute;
     top: 113px;
     right: 35px;
-    background-color: #333;
+    background-color: rgb(44, 107, 97);
     width: 52px;
     height: 25px;
     -moz-box-shadow:    inset 0 0 10px #000000;
@@ -62,7 +72,10 @@ body {
      align-items: center;
      color: #ddd;
   }
-  
+  .coin{
+    font-size: 12pt;
+  }
+
   .coin-box {
     position: absolute;
     right: 10px;
@@ -72,20 +85,25 @@ body {
     display: flex;
     justify-content: space-around;
   }
+
   
   .coin-outter {
     background-color: #ddd;
-    width: 25px;
+    width: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #666666;
-    border-radius: 100%;
+    border-radius: 10px;
     border: 1px dotted #696969;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
     cursor: pointer;
   }
   
+  .coin-outter:hover{
+    background-color: rgb(255, 239, 239);
+  }
+
   .help-box {
     position: absolute;
     top: 0;
@@ -104,7 +122,7 @@ body {
     position: absolute;
     right: 10px;
     top: 19px;
-    background-color: #333;
+    background-color: rgb(33, 64, 71);
     -moz-box-shadow:    inset 0 0 10px #000000;
      -webkit-box-shadow: inset 0 0 10px #000000;
      box-shadow:         inset 0 0 10px #000000;
@@ -119,24 +137,23 @@ body {
   
   .pepsi-box {
     position: absolute;
-    top: 0;
-    left: 23px;
+    left: 50px;
     width: 45px;
-    height: 100%;
+    height:100%;
+    bottom: 7px;
   }
   
   .coke-box {
     position: absolute;
-    top: 0;
+    top: 25px;
     bottom: 0;
-    right: 127px;
+    left: 120px;
   }
   
   .sprite-box {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 50px;
+    top: 20px;
+    right: 30px;
   }
   
   .fanta-box {
@@ -182,7 +199,6 @@ body {
   }
   
   .sprite {
-    background-color: #17A053;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,28 +240,26 @@ body {
     left: 175px;
   }
   
-  .pepsi-price {
-    top: 75px;
-    left: 22px;
+  .mobil1-price {
+    top: 65px;
+    left: 40px;
+  }
+
+  
+
+  .mobil2-price{
+  top: 65px;
+  left: 235px;
   }
   
-  .fanta-price {
-    top: 75px;
-    left: 102px;
-  }
-  
-  .sprite-price {
-    top: 75px;
-    right: 30px;
-  }
   
   .touch-pad {
     background-color: #333;
     position: absolute;
-    right: 5%;
+    right: 20px;
     top: 35%;
-    width: 75px;
-    height: 100px;
+    width: 80px;
+    height: 130px;
     display: flex;
     flex-wrap: wrap;
     -moz-box-shadow:    inset 0 0 10px #000000;
@@ -267,6 +281,10 @@ body {
   
   .button:active {
     background-color: #555;
+  }
+  
+  .button:hover{
+    background-color: rgb(83, 82, 82);
   }
   
   .button p {
@@ -304,12 +322,12 @@ body {
   }
   
   .product-row .tag-one {
-    left: 29px;
-    top: 0;
+    left: 55px;
+    bottom:35px;
   }
   
   .product-row .tag-two {
-    left: 178px;
+    left: 170px;
     top: 0;
   }
   
@@ -407,7 +425,7 @@ body {
 /* The Transformation */
 .img-hover-zoom--brightness:hover img {
   filter: brightness(100%);
-  transform: scale(1.3);
+  transform: scale(1.5);
 }
 
 .r34{
@@ -417,3 +435,55 @@ body {
 .lancertua{
   width: 100px;
 }
+
+.gacha-btn{
+  text-align: center;
+  border-radius: 20px;
+  color: rgb(6, 134, 102);
+  position: absolute;
+  top: 50px;
+  right: 35px;
+  background-color: rgba(247, 128, 128, 0.884);
+  width: 50px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.gacha-btn:hover{
+  background-color: rgba(99, 55, 52, 0.918);
+}
+
+.reset-btn{
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  top:330px;
+  right: 5px;
+  background-color: rgb(255, 252, 58);
+  width: 50px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.reset-btn:hover{
+  background-color: rgba(169, 180, 16, 0.596);
+}
+
+.cancel-btn{
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  top:330px;
+  right: 65px;
+  background-color: rgb(255, 17, 0);
+  width: 50px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.cancel-btn:hover{
+  background-color: rgba(184, 42, 32, 0.596);
+
+}
+
