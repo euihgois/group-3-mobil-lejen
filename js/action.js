@@ -14,37 +14,61 @@ const db_ID = {//data ID & Password
 }
 
 const db_skin = {//data untuk skin
-    skin1: {
+    mobil1: {
         image: 'imgs/1.png',// imgs/<nama file>.<extension>
         price: 40_000,
         stock: 10,
         rarity: 'common'
     },
-    skin2: {
+    mobil2: {
         image: 'dummyImage',
         price: 50_000,
         stock: 10,
         rarity: 'common'
     },
-    skin3: {
+    mobil3: {
         image: 'dummyImage',
         price: 20_000,
         stock: 10,
         rarity: 'poor'
     },
-    skin4: {
+    mobil4: {
         image: 'dummyImage',
         price: 400_000,
         stock: 10,
         rarity: 'rare'
     },
-    skin5: {
+    mobil5: {
         image: 'dummyImage',
         price: 150_000,
         stock: 10,
         rarity: 'uncommon'
     },
-    skin6: {
+    mobil6: {
+        image: 'dummyImage',
+        price: 900_000,
+        stock: 10,
+        rarity: 'legend'
+    },
+    mobil7: {
+        image: 'dummyImage',
+        price: 900_000,
+        stock: 10,
+        rarity: 'legend'
+    },
+    mobil8: {
+        image: 'dummyImage',
+        price: 900_000,
+        stock: 10,
+        rarity: 'legend'
+    },
+    mobil9: {
+        image: 'dummyImage',
+        price: 900_000,
+        stock: 10,
+        rarity: 'legend'
+    },
+    mobil10: {
         image: 'dummyImage',
         price: 900_000,
         stock: 10,
@@ -65,14 +89,15 @@ let userWallet = db_ID[userInput].wallet;//untuk display
 let tempWallet = userWallet;//temp untuk function reset
 let collectedMoney = 0;//state awal
 let userChart = [];//untuk display, setiap element berbentuk object {value: <nama skin>, cancelable: <true/false>}
-let displayChange; //untuk display kembalian jika diperlukan
+let displayChange = 0; //untuk display kembalian jika diperlukan
 let fetchedItems;
-
+// document.getElementsById('displayChange').value=displayChange;
 //function getMoney untuk mengambil user wallet sejumlah nominal di tombol
 function getMoney(nominal) {//asumsi parameter bertipe Number, jika tidak maka perlu dimodifikasi
     if (userWallet >= nominal) {
         userWallet -= nominal;
         collectedMoney += nominal;
+        // document.getElementsById('displayChange').value=collectedMoney;
     }
 }
 
@@ -83,6 +108,7 @@ function calculation(skin) {//tergantung skinnya apa yang dipencet, jika tombol 
         db_skin[skin].stock--; //stock berkurang
         userChart.push({value: skin, cancelable: true}); //item masuk chart
         // addItemOnDisplay();
+        // document.getElementsById('displayChange').value=collectedMoney;
     }
 }
 
@@ -105,6 +131,7 @@ function cancel() {
             userChart = remove(i, userChart);
             collectedMoney += db_skin[recentItem].price; //duit kembali
             db_skin[recentItem]++; //stock kembali
+            // document.getElementsById('displayChange').value=collectedMoney;
             break;
         }
     }
@@ -113,6 +140,7 @@ function cancel() {
 //function reset untuk mengembalikan state ke awal
 function reset() {
     collectedMoney = 0;//money di vending kosong
+    // document.getElementsById('displayChange').value=collectedMoney;
     userWallet = tempWallet;//duit kembali
     for (let item of userChart) {//mengemvalikan stock
         db_skin[item.value].stock++;
@@ -126,9 +154,11 @@ function checkOut() {
     userWallet += collectedMoney;
     fetchedItems = userChart;
     userChart = [];
-    displayChange = collectedMoney;
+    // displayChange = collectedMoney;
     collectedMoney = 0;
-    document.getElementById('tempat ambil item yang dibeli') = 'kumpulan gambar mobil yang diambil';//item dalam bentuk kumpulan
+    tempWallet = userWallet;
+    // document.getElementsById('displayChange').value=collectedMoney;
+    // document.getElementById('tempat ambil item yang dibeli') = 'kumpulan gambar mobil yang diambil';//item dalam bentuk kumpulan
 }
 
 //function filterByRarity untuk function groupChoice
@@ -150,8 +180,8 @@ function groupChoice(group) {//parameter diperoleh berupa array dari function fi
 
 //function gacha memberikan secara acak item dengan harga yang murah
 function gacha() { 
-    const GACHA_PRIZE = 50_000;
-    if (collectedMoney < GACHA_PRIZE) {//biar end function excetion jika user wallet kurang
+    const gachaPrice = 50_000;
+    if (collectedMoney < gachaPrice) {//biar end function excetion jika user wallet kurang
         return;
     }
 
@@ -170,6 +200,7 @@ function gacha() {
     
     let prize = groupChoice(filterByRarity(rarity));
     collectedMoney -= gachaPrice;
+    // document.getElementsById('displayChange').value=collectedMoney;
     userChart.push({value: prize, cancelable: false});
     db_skin[prize].stock--; //sepertinya harus dibuat function update
 }
@@ -241,3 +272,5 @@ function addItemOnDisplay() {
 // console.log(userWallet, collectedMoney, userChart,'<<7');
 // reset();
 // console.log(userWallet, collectedMoney, userChart,'<<8');
+document.getElementsById('displayChange').value=displayChange;
+document.getElementsById('displayChange').value=collectedMoney;

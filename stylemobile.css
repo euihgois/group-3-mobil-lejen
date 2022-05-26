@@ -487,3 +487,14 @@ body {
 
 }
 
+.checkout-btn{
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  top: 250px;
+  right: 5px;
+  background-color: rgb(255, 252, 58);
+  width: 50px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}

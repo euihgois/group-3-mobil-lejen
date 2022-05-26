@@ -61,7 +61,6 @@
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-4">
-          <form action="/" method="post">
             <h1 class="h3 mb-3 font-weight-normal"><strong>Login</strong></h1>
             <div class="form-floating">
               <input
@@ -94,12 +93,11 @@
               id="buttonlogin"
                 class="btn btn-lg btn-primary btn-block mt-2"
                 type="submit"
-                <a href="/home"></a>
+                onclick="signIn()"
                 <i class="bi bi-box-arrow-in-right"></i>
                 Login
               </button>
             </div>
-          </form>
           <small class="d-block text-center mt-2">
             Not Have Account <a href="/register">Register Now! </a></small
           >
