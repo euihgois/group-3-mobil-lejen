@@ -52,12 +52,12 @@ const db_skin = {//data untuk skin
     },
 }
 
-let userInput;//diperlukan agar bisa akses wallet user di db_ID
+let userInput = 'sultanCakung';//diperlukan agar bisa akses wallet user di db_ID, value diperoleh apabila button sign in dipencet
 let userWallet = db_ID[userInput].wallet;//untuk display
 let tempWallet = userWallet;//temp untuk function reset
 let collectedMoney = 0;//state awal
 let userChart = [];//untuk display, setiap element berbentuk object {value: <nama skin>, cancelable: <true/false>}
-let displayChange; //untuk display kembalian
+let displayChange; //untuk display kembalian jika diperlukan
 
 //function getMoney untuk mengambil user wallet sejumlah nominal di tombol
 function getMoney(nominal) {//asumsi parameter bertipe Number, jika tidak perlu dimodifikasi
@@ -195,90 +195,3 @@ cancel();
 console.log(userWallet, collectedMoney, userChart,'<<6');
 reset();
 console.log(userWallet, collectedMoney, userChart,'<<7');
-// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<1');
-// getMoney(150_000);
-// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<2');
-// calculation(itemClicked1);
-// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<3');
-// calculation(itemClicked2);
-// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<4');
-// // gacha();
-// // console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<5');
-// // reset();
-// // console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<6');
-// checkOut();
-// console.log(userWallet, collectedMoney, userChart, db_skin[itemClicked1].stock, db_skin[itemClicked2].stock, '<<<7');
-
-//abaikan yang bawah karena dom belom kelar
-// function startButton() {//ketika masuk pertama kali, ada tombol "Masuk", apabila diklik, layar ter-hide dan muncul form ID & Password
-//     document.getElementById("startDisplay").style.display = "none";
-// }
-
-// function signInChecker() {//function untuk pengecekan ID & password
-//     let inputID = document.getElementById("inputID").innerText; //belum tentu form
-//     let inputPass = document.getElementById("inputPass").innerText;
-
-//     if (!(inputID in db_ID)) {
-//         // alert('ID belum terdaftar'); //pengennya ada box dengan button 'ok' pake createElement seperti ini
-//         // let displaySignIn = document.getElementById('displaySignIn')
-//         // let displayMessage = document.createElement('div');
-//         // let message = document.createElement('p');
-//         // message.innerText = 'ID belum terdaftar';
-//         // displayMessage.appendChild(message);
-//         // displaySignIn.appendChild(displayMessage);
-        
-//         inputID = '';
-//         inputPass = '';
-//     } else if (inputPass !== db_ID[inputID].password) {
-//         alert('Password salah, silahkan ulangi kembali');
-//         inputPass = ''
-//     } else {
-//         document.getElementById("signInDisplay").style.display = "none"; //jika benar, display dibuat hidden
-//     }
-// }
-
-
-// let signInButton = document.getElementById("signInButton");
-// signInButton.addEventListener('click', signInChecker()); //pengecekan ID & Password apabila tombol sign in diklik
-
-// let userCash = db_ID[document.getElementById("inputID").innerText].wallet; //untuk memperoleh saldo user
-// let tempCash = userCash;//diperlukan untuk reset function
-// document.getElementById('statusSaldo') = userCash; //untuk display saldo pertama kali
-
-
-// //button untuk setiap skin, isi element dengan nomor skin dengan display invisible
-// let button1 = document.getElementById('button1'); //skin1
-// let button2 = document.getElementById('button2'); //skin2
-// let button3 = document.getElementById('button3'); //dst.
-// let button4 = document.getElementById('button4');
-// let button5 = document.getElementById('button5');
-// let button6 = document.getElementById('button6');
-
-// let chart = [];//keranjang bisa kita andaikan sebagai sebuah sequence dengan isi kode skin
-// let displayChart = document.getElementById('chart');//menampilakn sejumlah barang yang sudah diklik
-
-// function calculation(code) { //diisi oleg variable button(1 - 6)
-//     userCash -= db_skin[code.innerText]; //update cash
-//     db_skin[code.innerText].stock--; //dikurangi setiap diklik
-//     chart.push(code);
-//     let newItem = document.createElement('img');
-//     newItem.value = db_skin.image;
-//     let 
-// }
-
-// button1.addEventListener('click', calculation(button1.innerText)); //untuk contoh ketika button diklik, sisanya nanti jika sudah berhasil
-
-// function cancel() {//function seperti fungsi undo (ctrl + z)
-//     let lastItem = chart[chart.length - 1];
-//     userCash += db_skin[lastItem];
-//     db_skin[lastItem].stock++;
-// }
-
-// function reset() {//remove seluruh item di chart dan mengembalikan uang user ke awal
-//     chart = [];
-//     userCash = tempCash;
-// }
-
-// function checkOut() {//function berguna untuk menghilangkan uang secara permanen setelah melakukan transaksi
-
-// }
