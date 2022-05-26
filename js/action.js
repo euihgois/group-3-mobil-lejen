@@ -180,7 +180,8 @@ function signUp() {
     let newID = document.getElementById('nama pendaftar');//jika sempat kasih fitur filter password yang diizinkan (opsional)
     let newPass = document.getElementById('password user baru');
     if (filterID(newID)) {
-        db_ID[newID].password = {password: newPass, wallet: 0};//karena pengguna baru wallet kosong, mungkin kasih halaman fitur topup 
+        db_ID[newID].password = {password: newPass, wallet: 0};//karena pengguna baru wallet kosong, mungkin kasih halaman fitur topup
+        location.href = 'kembali ke halaman sign in'
     } else {
         alert('password tidak sesuai kriteria');//versi simpel
     }
@@ -199,7 +200,14 @@ function filterID(str) {
 
 //function fetchItem berguna untuk menghilang items yang muncul setelah checkout
 function fetchItem() {
-    document.getElementById('tempat ambil item yang dibeli') = 'kumplannya diremove atau dihilangkan, mungkin dihide'
+    document.getElementById('tempat ambil item yang dibeli').innerHTML = '';
+}
+
+//function addItemOnDisplay
+function addItemOnDisplay(array) {
+    for (let item of array) {
+        document.getElementById('display chart').innerHTML += db_skin[item.value].image; //nambah gambar, cuman mungkin lebih baik langsung dalam bentuk <div> jadi biar langsung teredit
+    }
 }
 
 //test case
