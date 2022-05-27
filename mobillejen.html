@@ -8,131 +8,214 @@
     <div class="page-wrap">
       <div class="vend-container">
         <div class="vend-outer">
-          <div class="return-box" id="return">
+         
 
-          </div>
+         <span href="#" class="gacha-btn" onclick="gacha()">Gacha</span>
+         <span href="#" class="cancel-btn" onclick="cancel()" >Cancel</span>
+         <span href="#" class="reset-btn" onclick="reset()">Reset</span>
+         <span href="#" class="checkout-btn" onclick="checkOut()">CheckOUT</span>
+
           <div class="display-box" id="displayBox">
 
           </div>
-          <div class="pay-box" id="pay">
-
+          <div class="pay-box" id="displayChange">
           </div>
           <div id="sodaCount" class="soda-count">
-
           </div>
           <div class="coin-box">
-            <div class="coin-outter" id="five">
-              <p class="coin">.05</p>
+            <div class="coin-outter" id="five" onclick="getMoney(50000)">
+              <p class="coin">50000</p>
             </div>
-            <div class="coin-outter" id="ten">
-              <p class="coin">.1</p>
-            </div>
-            <div class="coin-outter" id="twentyFive">
-              <p class="coin">.25</p>
+            <div class="coin-outter" id="ten" onclick="getMoney(100000)">
+              <p class="coin">100000</p>
             </div>
           </div>
           <div class="vend-back img-hover-zoom img-hover-zoom--brightness">
+            
             <div class="product-row ">
               <div class="soda-box pepsi-box " id="pepsiBox">
                 <li class="pepsi"><img class="mrbean soda-box" src="/imgs/__custom_showroom_1590435203-removebg-preview.png"></li>
               </div>
-              <div class="price-box pepsi-price">
-                <p>.10</p>
+              <div class="sprite-box">
+                <li class="sprite"><img class="r34 soda-box" src="/imgs/r34.png"></li>
+              </div>
+              
+              
+              <div class="price-box mobil1-price">
+                <p>100.000</p>
               </div>
               <div class="tag tag-one">
                 <p>A1</p>
               </div>
-              <div class="spiral">
-                <div class="inner-spiral">
-                  <div class="inner-spiral">
 
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="product-row">
-              <div class="soda-box coke-box" id="cokeBox">
-                <li class="coke"><img class="r34 soda-box" src="/imgs/r34.png"></li>
-              </div>
-              <div class="price-box coke-price">
-                <p>.50</p>
-              </div>
-              <div class="tag tag-two">
-                <p>B3</p>
-              </div>
-              <div class="spiral">
-                <div class="inner-spiral">
-                  <div class="inner-spiral">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="product-row">
-              <div class="soda-box sprite-box" id="spriteBox">
-                <div class="soda sprite" id="sprite">
-                  <<li class="sprite"><img class="lancertua" src="/imgs/lancer tua.png>"></li>
-                </div>
-              </div>
-              <div class="price-box sprite-price">
-                <p>.50</p>
+              <div class="price-box mobil2-price">
+                <p>200.000</p>
               </div>
               <div class="tag tag-three">
-                <p>C4</p>
+                <p>A2</p>
               </div>
-              <div class="spiral">
-                <div class="inner-spiral">
-                  <div class="inner-spiral">
+           </div>
+            
+           <div class="product-row">
+            <div class="soda-box pepsi-box " id="pepsiBox">
+              <li class="pepsi"><img class="mrbean soda-box" src="/imgs/ford.png"></li>
+            </div>
+            <div class="sprite-box">
+              <li class="sprite"><img class="r34 soda-box" src="/imgs/hi.png"></li>
+            </div>
+             
+            
+            <div class="price-box mobil1-price">
+              <p>800.000</p>
+            </div>
+            <div class="tag tag-one">
+              <p>B1</p>
+            </div>
+            <div class="price-box mobil2-price">
+              <p>350.000</p>
+            </div>
+            <div class="tag tag-three">
+              <p>B2</p>
+            </div>
+            </div>
 
-                  </div>
+            <div class="product-row">
+      
+                <div class="soda-box pepsi-box " id="pepsiBox">
+                  <li class="pepsi"><img class="mrbean soda-box" src="/imgs/0-3176_m-removebg-preview.png"></li>
                 </div>
+                <div class="sprite-box">
+                  <li class="sprite"><img class="yellow soda-box" src="/imgs/halo.png"></li>
+                </div>
+
+              <div class="price-box mobil1-price">
+                <p>50.000</p>
+              </div>
+              <div class="tag tag-one">
+                <p>C1</p>
+              </div>
+              <div class="price-box mobil2-price">
+                <p>450.000</p>
+              </div>
+              <div class="tag tag-three">
+                <p>C2</p>
+              </div>
+            </div>
+
+            <div class="product-row">
+              <div class="soda-box pepsi-box " id="pepsiBox">
+                <li class="pepsi"><img class="mrbean soda-box" src="/imgs/download-removebg-preview.png"></li>
+              </div>
+              <div class="sprite-box">
+                <li class="sprite"><img class="yellow soda-box" src="/imgs/Bugatti-Type-57-Barnfind-Artcurial-2019-Auction-01-removebg-preview.png"></li>
+              </div>
+
+              <div class="price-box mobil1-price">
+                <p>600.000</p>
+              </div>
+              <div class="tag tag-one">
+                <p>D1</p>
+              </div>
+              <div class="price-box mobil2-price">
+                <p>150.000</p>
+              </div>
+              <div class="tag tag-three">
+                <p>D2</p>
               </div>
             </div>
             <div class="product-row">
-              <div class="soda-box fanta-box" id="fantaBox">
-                <div class="soda fanta" id="fanta">
-                  <p class="soda-text">Fanta</p>
-                </div>
+              <div class="soda-box pepsi-box " id="pepsiBox">
+                <li class="pepsi"><img class="mrbean soda-box" src="/imgs/2494696-removebg-preview.png"></li>
               </div>
-              <div class="price-box fanta-price">
-                <p>.25</p>
+              <div class="sprite-box">
+                <li class="sprite"><img class="yellow soda-box" src="/imgs/cadillac-classic-car-classic-eldorado-slammed-hd-wallpaper-preview-removebg-preview.png"></li>
               </div>
-              <div class="tag tag-four">
-                <p>D2</p>
+              <div class="price-box mobil1-price">
+                <p>850.000</p>
               </div>
-              <div class="spiral">
-                <div class="inner-spiral">
-                  <div class="inner-spiral">
+              <div class="tag tag-one">
+                <p>E1</p>
+              </div>
+              <div class="price-box mobil2-price">
+                <p>50.000</p>
+              </div>
+              <div class="tag tag-three">
+                <p>E2</p>
+              </div>
 
-                  </div>
-                </div>
-              </div>
             </div>
+            <div class="product-row">
+            </div>
+           
             <div class="vend-glass"></div>
+            
           </div>
+          
           <div class="touch-pad">
-            <div class="button">
+            <div class="button" id="A1" onclick="calculation('mobil1')">
               <p>A1</p>
             </div>
-            <div class="button">
-              <p>B3</p>
+            <div class="button" id="A2" onclick="calculation('mobil2')">
+              <p>A2</p>
             </div>
-            <div class="button">
-              <p>C4</p>
+            <div class="button" id="B1" onclick="calculation('mobil3')">
+              <p>B1</p>
             </div>
-            <div class="button">
+            <div class="button" id="B2" onclick="calculation('mobil4')">
+              <p>B2</p>
+            </div>
+            <div class="button" id="C1" onclick="calculation('mobil5')">
+              <p>C1</p>
+            </div>
+            <div class="button" id="C2" onclick="calculation('mobil6')">
+              <p>C2</p>
+            </div>
+            <div class="button" id="D1" onclick="calculation('mobil7')">
+              <p>D1</p>
+            </div>
+            <div class="button" id="D2" onclick="calculation('mobil8')">
               <p>D2</p>
             </div>
+            <div class="button" id="E1" onclick="calculation('mobil9')">
+              <p>E2</p>
+            </div>
+            <div class="button" id="E2" onclick="calculation('mobil10')">
+              <p>E2</p>
+            </div>
+            
           </div>
           <div class="grab-box">
-
+            
           </div>
         </div>
       </div>
     </div>
 
-    <script src="vending.js"></script>
+    <!-- <script src="vending.js"></script>
     <script src="item.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js"></script> 
+  
+    kalo mau acces id A1 ~~ dstnya id="A1" deklarasinya sama jadi kalau B1 maka idnya juga id="B1"
+    mantap goodluck boy
+
+    ada id nya masing masing
+  
+        <span href="#" class="gacha-btn">Gacha</span>  INI BUTTON GACHA
+         <span href="#" class="cancel-btn" >Cancel</span> INI BUTTON CANCEL
+         <span href="#" class="reset-btn">Reset</span> INI BUTTON RESET
+  
+   <div class="coin-box">
+            <div class="coin-outter" id="five"> INI UNTUK AKSES COINNYA YANG 50000 (LIMA PULUH RIBU)
+              <p class="coin">50000</p>
+            </div>
+
+            <div class="coin-outter" id="ten"> INI UNTUK AKSES COINNYA YANG 100000 (SERATUS RIBU)
+              <p class="coin">100000</p>
+            </div>
+          </div>
+  
+  -->
+
+  <script src="./js/action.js"></script>
   </body>
 </html>
