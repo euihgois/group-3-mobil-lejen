@@ -215,6 +215,7 @@ function signIn() {
     userInput = document.getElementById('email').value; //box id
     sessionStorage.setItem('userInput', userInput);
     if (userInput in db_ID && inputPassword === db_ID[userInput].password) {
+        alert("Login berhasil");
         location.href = 'mobillejen.html';//<file html>
     } 
     else {
