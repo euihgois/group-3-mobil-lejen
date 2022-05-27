@@ -1,4 +1,4 @@
-const db_ID = {//data ID & Password
+const db_ID = sessionStorage.getItem('db_ID') || {//data ID & Password
     '1': {
         password: '1',
         wallet: 300_000
@@ -13,64 +13,64 @@ const db_ID = {//data ID & Password
     }
 }
 
-const db_skin = {//data untuk skin
+const db_skin = sessionStorage.getItem('db_skin') || {//data untuk skin
     mobil1: {
         image: 'imgs/__custom_showroom_1590435203-removebg-preview.png',// imgs/<nama file>.<extension>
-        price: 40_000,
+        price: 100_000,
         stock: 10,
         rarity: 'common'
     },
     mobil2: {
-        image: 'dummyImage',
-        price: 50_000,
+        image: 'imgs/r34.png',
+        price: 200_000,
         stock: 10,
         rarity: 'common'
     },
     mobil3: {
-        image: 'dummyImage',
-        price: 20_000,
+        image: 'imgs/ford.png',
+        price: 800_000,
         stock: 10,
         rarity: 'poor'
     },
     mobil4: {
-        image: 'dummyImage',
-        price: 400_000,
+        image: 'imgs/hi.png',
+        price: 350_000,
         stock: 10,
         rarity: 'rare'
     },
     mobil5: {
-        image: 'dummyImage',
-        price: 150_000,
+        image: 'imgs/0-3176_m-removebg-preview.png',
+        price: 50_000,
         stock: 10,
         rarity: 'uncommon'
     },
     mobil6: {
-        image: 'dummyImage',
-        price: 900_000,
+        image: 'imgs/halo.png',
+        price: 450_000,
         stock: 10,
         rarity: 'legend'
     },
     mobil7: {
-        image: 'dummyImage',
-        price: 900_000,
+        image: 'imgs/download-removebg-preview.png',
+        price: 600_000,
         stock: 10,
         rarity: 'legend'
     },
     mobil8: {
-        image: 'dummyImage',
-        price: 900_000,
+        image: 'imgs/Bugatti-Type-57-Barnfind-Artcurial-2019-Auction-01-removebg-preview.png',
+        price: 150_000,
         stock: 10,
         rarity: 'legend'
     },
     mobil9: {
-        image: 'dummyImage',
-        price: 900_000,
+        image: 'imgs/2494696-removebg-preview.png',
+        price: 850_000,
         stock: 10,
         rarity: 'legend'
     },
     mobil10: {
-        image: 'dummyImage',
-        price: 900_000,
+        image: 'imgs/cadillac-classic-car-classic-eldorado-slammed-hd-wallpaper-preview-removebg-preview.png',
+        price: 50_000,
         stock: 10,
         rarity: 'legend'
     },
@@ -109,7 +109,7 @@ function calculation(skin) {//tergantung skinnya apa yang dipencet, jika tombol 
         userChart.push({value: skin, cancelable: true}); //item masuk chart
         document.getElementById('displayChange').innerHTML = collectedMoney;
         // document.getElementsById('displayChange').value=collectedMoney;
-        updateDisplay();
+        updateDisplay(userChart, 'sodaCount');
     }
 }
 
@@ -137,7 +137,7 @@ function cancel() {
             break;
         }
     }
-    updateDisplay();
+    updateDisplay(userChart, 'sodaCount');
 }
 
 //function reset untuk mengembalikan state ke awal
@@ -149,7 +149,7 @@ function reset() {
         db_skin[item.value].stock++;
     }
     userChart = [];//chart dikosongkan
-    updateDisplay();
+    updateDisplay(userChart, 'sodaCount');
 }
 
 //function checktOut mirip seperti reset tetapi state tidak kembali ke awal
@@ -159,7 +159,8 @@ function checkOut() {
     fetchedItems = userChart;
     userChart = [];
     // displayChange = collectedMoney;
-    updateDisplay();
+    updateDisplay(userChart, 'sodaCount');
+    fetchItem();
     collectedMoney = 0;
     document.getElementById('displayChange').innerHTML = collectedMoney;
     tempWallet = userWallet;
@@ -209,7 +210,7 @@ function gacha() {
     document.getElementById('displayChange').innerHTML = collectedMoney;
     // document.getElementsById('displayChange').value=collectedMoney;
     userChart.push({value: prize, cancelable: false});
-    updateDisplay();
+    updateDisplay(userChart, 'sodaCount');
     db_skin[prize].stock--; //sepertinya harus dibuat function update
 }
 
@@ -218,6 +219,8 @@ function signIn() {
     let inputPassword = document.getElementById('password').value;//box password
     userInput = document.getElementById('email').value; //box id
     sessionStorage.setItem('userInput', userInput);
+    sessionStorage.setItem('db_ID', db_ID);
+    sessionStorage.setItem('db_skin', db_skin);
     if (userInput in db_ID && inputPassword === db_ID[userInput].password) {
         alert("Login berhasil");
         location.href = 'mobillejen.html';//<file html>
@@ -240,33 +243,43 @@ function signUp() {
 }
 
 //function filter ID
-function filterID(str) {
-    const forbidden = [' ', '&', '@'];//hanya perlu dimasukkan saja yang dilarang
-    for (let char of str) {
-        if (forbidden.includes(char)) {
-            return false;
-        }
-    }
-    return true;
-}
+// function filterID(str) {
+//     const forbidden = [' ', '&', '@'];//hanya perlu dimasukkan saja yang dilarang
+//     for (let char of str) {
+//         if (forbidden.includes(char)) {
+//             return false;
+//         }
+//     }
+//     return true;
 
 //function fetchItem berguna untuk menghilang items yang muncul setelah checkout
 function fetchItem() {
-    document.getElementById('tempat ambil item yang dibeli').value = '';
+    updateDisplay(fetchedItems, 'fetch-box');
+}
+
+function getItems() {
+    document.getElementById('fetch-box').innerHTML = '';
+}
+
+function signOut() {
+    sessionStorage.setItem('db_ID', db_ID);
+    sessionStorage.setItem('db_skin', db_skin);
+    alert("Keluar halaman berhasil");
+    location.href = 'index.html';
 }
 
 //function addItemOnDisplay berguna untuk menambah element di html
-function addItemOnDisplay() {
-    document.getElementById('display chart').value = '';//mungkin kita remove dulu isinya lalu ganti yang baru
-    for (let item of userChart) {
-        document.getElementById('display chart').value += db_skin[item.value].image; //nambah gambar, cuman mungkin lebih baik langsung dalam bentuk <div> jadi biar langsung teredit
-    }
-}
+// function addItemOnDisplay() {
+//     document.getElementById('display chart').value = '';//mungkin kita remove dulu isinya lalu ganti yang baru
+//     for (let item of userChart) {
+//         document.getElementById('display chart').value += db_skin[item.value].image; //nambah gambar, cuman mungkin lebih baik langsung dalam bentuk <div> jadi biar langsung teredit
+//     }
+// }
 
-function updateDisplay() {
-    document.getElementById('sodaCount').innerHTML = '';
-    for (let mobil of userChart) {
-        document.getElementById('sodaCount').innerHTML += `<img width='50px' src=${db_skin[mobil.value].image}>`;
+function updateDisplay(array, id) {
+    document.getElementById(id).innerHTML = '';
+    for (let mobil of array) {
+        document.getElementById(id).innerHTML += `<img width='50px' src=${db_skin[mobil.value].image}>`;
     }
 }
 //test case
