@@ -1,6 +1,6 @@
 const db_ID = /*!(sessionStorage.getItem('db_ID')=== undefined) ? (sessionStorage.getItem('db_ID')):*/ {//data ID & Password
-    '1': {
-        password: '1',
+    'orangbiasa@gmail.com': {
+        password: 'orangbiasaaja',
         wallet: 300_000
     },
     'sultanCakung@hotmail.com': {
