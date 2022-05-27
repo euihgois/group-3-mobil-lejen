@@ -10,7 +10,7 @@ body {
 
   height: 100vh;
   position: relative;
-  padding: 75px 15px 50px 15px;
+  padding: 5px 15px 50px 15px;
  
 }
 
@@ -24,10 +24,11 @@ body {
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
   margin: auto;
   height: 500px;
-  background-image: url(/imgs/e7240d0301e0eb492dc1a774a31e001d-700.jpg);
+ background-color: rgb(67, 148, 157);
   background-size: 90%;
   padding: 20px;
   position: relative;
+  top: 40px;
   border-radius: 5px;
   z-index: 9999;
 }
@@ -304,7 +305,7 @@ left: 235px;
 }
 
 .product-row {
-  background-color: #111;
+  background-color: rgb(94, 91, 91);
   border-bottom: 4px solid black;
   height: 81px;
   -moz-box-shadow:    inset 0 0 10px #000000;
@@ -373,7 +374,7 @@ left: 235px;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 0;
   border-radius: 5px;
 }
 
@@ -416,17 +417,30 @@ left: 235px;
   
 }
 
-.img-hover-zoom--brightness img {
+/* .img-hover-zoom--brightness img {
 transition: transform 2s, filter 1.5s ease-in-out;
 transform-origin: center center;
 filter: brightness(50%);
-}
+} */
 
 /* The Transformation */
-.img-hover-zoom--brightness:hover img {
+/* .img-hover-zoom--brightness:hover  img {
 filter: brightness(100%);
 transform: scale(1.5);
+} */
+
+
+.soda-box {
+  transition: transform 2s, filter 1.5s ease-in-out;
+  transform-origin: center center;
+  filter: brightness(70%);
 }
+
+.soda-box:hover {
+  filter: brightness(100%);
+  transform: scale(1.2);
+}
+
 
 .r34{
 width: 100px;
@@ -502,9 +516,62 @@ cursor: pointer;
 .checkout-btn{
   top: 355px;
   right: 35px;
-  background-color: green;
+  background-color: rgb(140, 255, 0);
 }
 
 .checkout-btn:hover{
   background-color: greenyellow;
 }
+
+
+.wallet-container{
+  border-radius: 20px;
+  width: 300px;
+  height: 40px;
+  padding: 15px;
+  margin-left: 900px;
+  background-color: rgba(56, 32, 36, 0.76);
+  margin-bottom: 5px;
+  position: absolute;
+
+
+}
+
+#user-wallet{
+  margin:0;
+  position: absolute;
+  color: rgb(23, 255, 43);
+  position: absolute;
+  right: 195px;
+  top: 35px;
+  font-size: 18pt;
+  
+}
+
+#sign-out{
+  background-color: #ee8625;
+  border-radius: 5px;
+  right: 40px;
+  font-size: 20pt;
+  position: absolute;
+  top: 25px;
+  cursor: pointer;
+  
+}
+#sign-out:hover{
+  background-color: rgb(70, 66, 14);
+}
+
+#userswall{
+  margin:0;
+  position: absolute;
+  right: 170px;
+  top: 15px;
+  font-size: 15pt;
+  color: rgb(255, 255, 255);
+}
+
+#walls{
+  width: 30px;
+}
+
