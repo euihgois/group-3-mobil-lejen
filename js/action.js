@@ -107,7 +107,6 @@ function calculation(skin) {//tergantung skinnya apa yang dipencet, jika tombol 
         collectedMoney -= db_skin[skin].price;//duit di vending berkurang
         db_skin[skin].stock--; //stock berkurang
         userChart.push({value: skin, cancelable: true}); //item masuk chart
-        // addItemOnDisplay();
         document.getElementById('displayChange').innerHTML = collectedMoney;
         // document.getElementsById('displayChange').value=collectedMoney;
         updateDisplay();
@@ -130,9 +129,9 @@ function cancel() {
     for (let i = userChart.length - 1; i >= 0; i--) {
         if (userChart[i].cancelable) {
             let recentItem = userChart[i].value;//mengambil value recent item yang dapat di-cancel
-            userChart = remove(i, userChart);
             collectedMoney += db_skin[recentItem].price; //duit kembali
-            db_skin[recentItem]++; //stock kembali
+            userChart = remove(i, userChart);
+            db_skin[recentItem].stock++; //stock kembali
             // document.getElementsById('displayChange').value=collectedMoney;
             document.getElementById('displayChange').innerHTML = collectedMoney;
             break;
@@ -266,9 +265,8 @@ function addItemOnDisplay() {
 
 function updateDisplay() {
     document.getElementById('sodaCount').innerHTML = '';
-    for (let i = 0; i < userChart.length; i++) {
-        console.log(userChart[i].value, db_skin[userChart[i].value].price);
-        document.getElementById('sodaCount').innerHTML += `<img width='50px' src=${db_skin[userChart[i].value].image}>`;
+    for (let mobil of userChart) {
+        document.getElementById('sodaCount').innerHTML += `<img width='50px' src=${db_skin[mobil.value].image}>`;
     }
 }
 //test case
