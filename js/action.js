@@ -15,7 +15,7 @@ const db_ID = {//data ID & Password
 
 const db_skin = {//data untuk skin
     mobil1: {
-        image: 'imgs/1.png',// imgs/<nama file>.<extension>
+        image: 'imgs/__custom_showroom_1590435203-removebg-preview.png',// imgs/<nama file>.<extension>
         price: 40_000,
         stock: 10,
         rarity: 'common'
@@ -110,6 +110,7 @@ function calculation(skin) {//tergantung skinnya apa yang dipencet, jika tombol 
         // addItemOnDisplay();
         document.getElementById('displayChange').innerHTML = collectedMoney;
         // document.getElementsById('displayChange').value=collectedMoney;
+        updateDisplay();
     }
 }
 
@@ -137,6 +138,7 @@ function cancel() {
             break;
         }
     }
+    updateDisplay();
 }
 
 //function reset untuk mengembalikan state ke awal
@@ -148,6 +150,7 @@ function reset() {
         db_skin[item.value].stock++;
     }
     userChart = [];//chart dikosongkan
+    updateDisplay();
 }
 
 //function checktOut mirip seperti reset tetapi state tidak kembali ke awal
@@ -157,6 +160,7 @@ function checkOut() {
     fetchedItems = userChart;
     userChart = [];
     // displayChange = collectedMoney;
+    updateDisplay();
     collectedMoney = 0;
     document.getElementById('displayChange').innerHTML = collectedMoney;
     tempWallet = userWallet;
@@ -206,6 +210,7 @@ function gacha() {
     document.getElementById('displayChange').innerHTML = collectedMoney;
     // document.getElementsById('displayChange').value=collectedMoney;
     userChart.push({value: prize, cancelable: false});
+    updateDisplay();
     db_skin[prize].stock--; //sepertinya harus dibuat function update
 }
 
@@ -248,7 +253,7 @@ function filterID(str) {
 
 //function fetchItem berguna untuk menghilang items yang muncul setelah checkout
 function fetchItem() {
-    document.getElementById('tempat ambil item yang dibeli').innerHTML = '';
+    document.getElementById('tempat ambil item yang dibeli').value = '';
 }
 
 //function addItemOnDisplay berguna untuk menambah element di html
@@ -259,6 +264,13 @@ function addItemOnDisplay() {
     }
 }
 
+function updateDisplay() {
+    document.getElementById('sodaCount').innerHTML = '';
+    for (let i = 0; i < userChart.length; i++) {
+        console.log(userChart[i].value, db_skin[userChart[i].value].price);
+        document.getElementById('sodaCount').innerHTML += `<img width='50px' src=${db_skin[userChart[i].value].image}>`;
+    }
+}
 //test case
 // let skin2 = 'skin2', skin1 = 'skin1'
 // console.log(userWallet, collectedMoney, userChart, '<<1');
@@ -277,5 +289,3 @@ function addItemOnDisplay() {
 // console.log(userWallet, collectedMoney, userChart,'<<7');
 // reset();
 // console.log(userWallet, collectedMoney, userChart,'<<8');
-document.getElementsById('displayChange').value=displayChange;
-document.getElementsById('displayChange').value=collectedMoney;
